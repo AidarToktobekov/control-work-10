@@ -1,0 +1,44 @@
+{
+  "news": [
+    {
+      "title": "ddd",
+      "content": "ddd",
+      "image": null,
+      "date": "2024-08-24T09:08:32.849Z",
+      "id": "97e075ae-dc84-4f61-a191-1eb796f090d7"
+    },
+    {
+      "title": "ggg",
+      "content": "ggg",
+      "image": null,
+      "date": "2024-08-24T09:08:40.340Z",
+      "id": "7a291f6c-d40d-405c-9fb4-78be22253a3e"
+    }
+  ],
+  "comments": [
+    {
+      "author": "Anonymous",
+      "idNews": "97e075ae-dc84-4f61-a191-1eb796f090d7",
+      "content": "Ok",
+      "id": "d93e6f6d-b5e2-402a-b4c8-5ef64d2f7552"
+    },
+    {
+      "author": "Anonymous",
+      "idNews": "7a291f6c-d40d-405c-9fb4-78be22253a3e",
+      "content": "no",
+      "id": "a5a42187-9762-49a6-84cb-3a19f46eff00"
+    },
+    {
+      "author": "Anonymous",
+      "idNews": "7a291f6c-d40d-405c-9fb4-78be22253a3e",
+      "content": "n2o",
+      "id": "854d33bc-c54e-46d3-a89e-35bfeaa6e7d5"
+    },
+    {
+      "author": "Anonymous",
+      "idNews": "7a291f6c-d40d-405c-9fb4-78be22253a3e",
+      "content": "n2o1",
+      "id": "77b697ec-ebe6-4080-b9f5-459fc264eff8"
+    }
+  ]
+}
