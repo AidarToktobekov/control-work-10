@@ -2,15 +2,11 @@ import express from "express";
 import fileDb from "./fileDb";
 import commentsRouter from "./routers/comments";
 import newsRouter from "./routers/news";
-import cors, { CorsOptions} from "cors";
+import cors, {CorsOptions} from "cors";
 
 const app = express();
 const port = 8080;
 
-app.use(express.json());
-app.use(express.static('public'));
-app.use('/', commentsRouter);
-app.use('/', newsRouter);
 const whiteList = ['http://localhost:5173'];
 const corsOptions: CorsOptions = {
     origin: (origin, callback)=>{
@@ -23,7 +19,10 @@ const corsOptions: CorsOptions = {
 }
 
 app.use(cors(corsOptions));
-
+app.use(express.json());
+app.use(express.static('public'));
+app.use('/', commentsRouter);
+app.use('/', newsRouter);
 const run = async()=>{
     await fileDb.init();
 
