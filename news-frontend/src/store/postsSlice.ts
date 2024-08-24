@@ -1,22 +1,21 @@
-import {GetNews, IComment, INews} from '../types';
+import {GetNews, INews} from '../types';
 import { createSlice } from '@reduxjs/toolkit';
-import {fetchComments, fetchNews, fetchOneNews} from "./postsThunk.ts";
-// import {createCategory, deleteCategory, fetchCategory, fetchOneCategory, updateCategory} from './financeThunks';
+import {addPost, fetchNews, fetchOneNews} from "./postsThunk.ts";
 
 interface NewsState {
     news: GetNews[];
     oneNews: INews | null;
-    comments: IComment[];
-    newsLoaded: boolean;
     onePostsLoaded: boolean;
+    newsLoaded: boolean;
+    addLoading: boolean;
 }
 
 const initialState: NewsState = {
     news: [],
     oneNews: null,
-    comments: [],
     newsLoaded: false,
     onePostsLoaded: false,
+    addLoading: false,
 };
 
 export const newsSlice = createSlice({
@@ -47,15 +46,14 @@ export const newsSlice = createSlice({
                 state.onePostsLoaded = false;
             });
         builder
-            .addCase(fetchComments.pending, (state) => {
-                state.onePostsLoaded = true;
+            .addCase(addPost.pending, (state) => {
+                state.addLoading = true;
             })
-            .addCase(fetchComments.fulfilled, (state, { payload: items }) => {
-                state.onePostsLoaded = false;
-                state.comments = items;
+            .addCase(addPost.fulfilled, (state) => {
+                state.addLoading = false;
             })
-            .addCase(fetchComments.rejected, (state) => {
-                state.onePostsLoaded = false;
+            .addCase(addPost.rejected, (state) => {
+                state.addLoading = false;
             });
     },
     selectors: {
@@ -63,7 +61,6 @@ export const newsSlice = createSlice({
         selectOneNews: (state) => state.oneNews,
         selectNewsLoading: (state) => state.newsLoaded,
         selectOnePostsLoading: (state) => state.onePostsLoaded,
-        selectComments: (state)=> state.comments
     },
 });
 
@@ -73,5 +70,4 @@ export const {
     selectNews,
     selectNewsLoading,
     selectOnePostsLoading,
-    selectOneNews,
-    selectComments} = newsSlice.selectors;
+    selectOneNews,} = newsSlice.selectors;
