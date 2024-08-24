@@ -14,6 +14,12 @@ export interface IComment{
 }
 
 export type GetNews = Omit<INews, 'content'>;
+export interface PostNews{
+    title: string;
+    content: string;
+    image: string | null;
+}
+
 export type CommentWithoutId = Omit<IComment, 'id'>;
 
 
